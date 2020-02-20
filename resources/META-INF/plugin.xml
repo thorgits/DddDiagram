@@ -1,0 +1,55 @@
+<idea-plugin>
+  <id>ddd.diagram.tool</id>
+  <name>DddTool</name>
+  <version>1.0</version>
+  <vendor email="thor_stefan@163.com">Domain-Driven Design Tools</vendor>
+
+  <description>Auto draw the model graph of DDD  see http://www.jetbrains.org
+  </description>
+
+  <change-notes>Generate ddd model and  class see http://www.jetbrains.org
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <group id="ddd" text="DDD Class" description="Generate DDD stereotype" popup="true"  icon="AllIcons.Nodes.Plugin">
+
+      <action id="entity" class="ddd.template.EntityAction" text="Entity" description="Entity">
+      </action>
+      <action id="aggregateRoot" class="ddd.template.AggregateRootAction" text="AggregateRoot" description="Generate AggregateRoot">
+      </action>
+      <action id="aggregatePart" class="ddd.template.AggregatePartAction" text="AggregatePart"
+              description="Generate AggregatePart">
+      </action>
+      <action id="event" class="ddd.template.EventAction" text="Event" description="Generate Event">
+      </action>
+      <action id="domainService" class="ddd.template.DomainServiceAction" text="DomainService"
+              description="Generate DomainService">
+      </action>
+      <action id="specification" class="ddd.template.SpecificationAction" text="Specification"
+              description="Generate Specification">
+      </action>
+      <action id="repository" class="ddd.template.RepositoryAction" text="Repository" description="Generate Repository">
+      </action>
+      <action id="valueObject" class="ddd.template.ValueObjectAction" text="ValueObject" description="Generate ValueObject">
+      </action>
+      <add-to-group group-id="NewGroup1" anchor="after"  relative-to-action="NewClass"/>
+    </group>
+
+    <action id="graph" class="ddd.diagram.GraphAction" text="DDD Graph" description="Draw DDD graph with plantUML">
+      <add-to-group group-id="ProjectViewPopupMenuRefactoringGroup" anchor="first"/>
+    </action>
+  </actions>
+
+</idea-plugin>
